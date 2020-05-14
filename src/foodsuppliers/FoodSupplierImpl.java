@@ -12,7 +12,7 @@ import helpers.JSONReaderHelper;
 public class FoodSupplierImpl implements FoodSupplier
 {
 
-    public static final String SUPPLIER_FILE = "src/foodsupplier/suppliers.json";
+    public static final String SUPPLIER_FILE = "src/foodsuppliers/suppliers.json";
 
     private JSONObject vendorToItemsJson = new JSONObject();
 
@@ -21,15 +21,12 @@ public class FoodSupplierImpl implements FoodSupplier
         vendorToItemsJson = JSONReaderHelper.getData(SUPPLIER_FILE);
     }
 
-    // Gets the name of vendors with an ingredient
-    // Returns vendor, quantity remaining
     public List<String> getVendorsByIngredient(String itemName)
     {
         List<String> vendors = new ArrayList<String>();
 
         for (Iterator iterator = vendorToItemsJson.keySet().iterator(); iterator.hasNext();) {
             String vendorName = (String) iterator.next();
-            // System.out.println("vendor: " + vendorName + "item: " + itemName);
             if (vendorHasItem(vendorName, itemName)) {
                 vendors.add(vendorName);
             }

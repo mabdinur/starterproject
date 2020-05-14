@@ -9,8 +9,6 @@ import foodvendors.FoodVendorImpl;
 public class FoodFinderImpl implements FoodFinder
 {
     
-    private static final String VEDNOR = "vendor";
-    
     public Map<String, Long> getIngredient(String ingredientName)
     {
         FoodSupplierImpl foodSupplierImpl = new FoodSupplierImpl();
@@ -19,7 +17,6 @@ public class FoodFinderImpl implements FoodFinder
 
         FoodVendorImpl foodVendorImpl = new FoodVendorImpl();
         Map<String, Long> ingredientMap = foodVendorImpl.getIngredientPriceFromVendor(vendorName, ingredientName);
-        // ingredientMap.put(VEDNOR, vendorName);
 
         return ingredientMap;
     } 

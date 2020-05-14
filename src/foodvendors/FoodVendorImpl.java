@@ -12,7 +12,8 @@ public class FoodVendorImpl implements FoodVendor
     public static final String PRICE = "price";
     public static final String QUANTITY = "quantity";
 
-    private static final String VENDOR_FILE = "src/foodvendor/vendors.json";
+    private static final String VENDOR_FILE = "src/foodvendors/vendors.json";
+
     private JSONObject vendorToItemsJson = new JSONObject();
 
     public FoodVendorImpl()
