@@ -4,8 +4,7 @@ import java.util.Map;
 
 public interface FoodFinder {
 
-    // Gets the ingredient if it exists
-    // updates inventory
-    // returns ingredient, vendor, quanitity remaining from vendor
+    // Gets ingredients from food vendors
+    // Returns ingredient price and quantity from vendor
     public Map<String, Long> getIngredient(String ingredient);
 }

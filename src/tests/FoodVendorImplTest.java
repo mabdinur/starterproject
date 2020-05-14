@@ -22,7 +22,7 @@ public class FoodVendorImplTest
     {
         FoodVendorImpl foodVendorImpl = new FoodVendorImpl();
         Map<String, Long> ingredientInfoMap =
-            foodVendorImpl.getIngredientPriceFromVendor(VENDOR_NAME, INGREDIENT_NAME);
+            foodVendorImpl.getIngredientFromVendor(VENDOR_NAME, INGREDIENT_NAME);
         
         assertEquals(ingredientInfoMap.get(FoodVendorImpl.PRICE), PRICE);
         assertEquals(ingredientInfoMap.get(FoodVendorImpl.QUANTITY), QUANTITY);

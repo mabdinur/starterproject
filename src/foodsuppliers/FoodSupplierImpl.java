@@ -9,6 +9,9 @@ import org.json.simple.JSONObject;
 
 import helpers.JSONReaderHelper;
 
+/**
+ * Maps vendors to ingredients
+ */
 public class FoodSupplierImpl implements FoodSupplier
 {
 
@@ -37,8 +40,8 @@ public class FoodSupplierImpl implements FoodSupplier
 
     public Boolean vendorHasItem(String vendorName, String itemName)
     {
-        JSONArray vendorItems = (JSONArray) vendorToItemsJson.get(vendorName);
-        String vendorItemsStr = vendorItems.toString();
+        JSONArray vendorItemsArray = (JSONArray) vendorToItemsJson.get(vendorName);
+        String vendorItemsStr = vendorItemsArray.toString();
         return vendorItemsStr.contains(itemName);
     }
 }

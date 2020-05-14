@@ -5,7 +5,7 @@ import java.util.List;
 public interface FoodSupplier
 {
 
-    // Gets the name of vendors with an ingredient
-    // Returns vendor, quantity remaining
+    // Gets all vendors with an ingredient
+    // Returns the name of each vendor
     public List<String> getVendorsByIngredient(String ingredientName);
 }

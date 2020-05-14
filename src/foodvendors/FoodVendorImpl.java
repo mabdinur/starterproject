@@ -7,6 +7,9 @@ import org.json.simple.JSONObject;
 
 import helpers.JSONReaderHelper;
 
+/**
+ * Maps Item quantity and price to vendors
+ */
 public class FoodVendorImpl implements FoodVendor
 {
     public static final String PRICE = "price";
@@ -21,17 +24,17 @@ public class FoodVendorImpl implements FoodVendor
         vendorToItemsJson = JSONReaderHelper.getData(VENDOR_FILE);
     }
 
-    public Map<String, Long> getIngredientPriceFromVendor(String vendorName, String itemName)
+    public Map<String, Long> getIngredientFromVendor(String vendorName, String itemName)
     {
         JSONObject vendorItemsJson = (JSONObject) vendorToItemsJson.get(vendorName);
-        JSONObject itemDataJson = (JSONObject) vendorItemsJson.get(itemName);
+        JSONObject itemJson = (JSONObject) vendorItemsJson.get(itemName);
         
-        Map<String, Long> itemDataMap = new HashMap<String, Long>();
-        Long quantity = (Long) itemDataJson.get(QUANTITY);
-        Long price = (Long) itemDataJson.get(PRICE);
-        itemDataMap.put(QUANTITY, quantity);
-        itemDataMap.put(PRICE, price);
+        Map<String, Long> itemMap = new HashMap<String, Long>();
+        Long quantity = (Long) itemJson.get(QUANTITY);
+        Long price = (Long) itemJson.get(PRICE);
+        itemMap.put(QUANTITY, quantity);
+        itemMap.put(PRICE, price);
 
-        return itemDataMap;
+        return itemMap;
     }
 }

@@ -2,8 +2,10 @@ package foodvendors;
 
 import java.util.Map;
 
+/**
+ * Gets the price and quantity of an item from vendor
+ */
 public interface FoodVendor {
 
-    // Gets the price of  item from vendor
-    public Map<String, Long> getIngredientPriceFromVendor(String vendorName, String ingredientName);
+    public Map<String, Long> getIngredientFromVendor(String vendorName, String ingredientName);
 }
