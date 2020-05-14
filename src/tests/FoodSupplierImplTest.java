@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import foodsupplier.FoodSupplierImpl;
+import foodsuppliers.FoodSupplierImpl;
 
 public class FoodSupplierImplTest
 {

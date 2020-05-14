@@ -1,4 +1,4 @@
-package foodsupplier;
+package foodsuppliers;
 
 import java.util.List;
 

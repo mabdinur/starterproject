@@ -1,10 +1,10 @@
-package foodfinder;
+package foodfinders;
 
 import java.util.List;
 import java.util.Map;
 
-import foodsupplier.FoodSupplierImpl;
-import foodvendor.FoodVendorImpl;
+import foodsuppliers.FoodSupplierImpl;
+import foodvendors.FoodVendorImpl;
 
 public class FoodFinderImpl implements FoodFinder
 {

@@ -1,4 +1,4 @@
-package foodvendor;
+package foodvendors;
 
 import java.util.Map;
 

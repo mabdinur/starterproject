@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import foodfinder.FoodFinderImpl;
-import foodvendor.FoodVendorImpl;
+import foodfinders.FoodFinderImpl;
+import foodvendors.FoodVendorImpl;
 
 public class FoodFinderImplTest
 {

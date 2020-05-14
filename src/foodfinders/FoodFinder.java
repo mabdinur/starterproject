@@ -1,4 +1,4 @@
-package foodfinder;
+package foodfinders;
 
 import java.util.Map;
 

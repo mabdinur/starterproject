@@ -12,11 +12,11 @@ public class JSONReaderHelper
 {
     public static JSONObject getData(String fileName)
     {
-        JSONObject vendorsJson = new JSONObject();
+        JSONObject dataJson = new JSONObject();
         try (FileReader reader = new FileReader(fileName)) {
             // Read JSON file
             JSONParser jsonParser = new JSONParser();
-            vendorsJson = (JSONObject) jsonParser.parse(reader);
+            dataJson = (JSONObject) jsonParser.parse(reader);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -25,6 +25,6 @@ public class JSONReaderHelper
             e.printStackTrace();
         }
 
-        return vendorsJson;
+        return dataJson;
     }
 }
