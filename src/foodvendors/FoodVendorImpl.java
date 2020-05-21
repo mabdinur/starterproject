@@ -1,40 +1,56 @@
 package foodvendors;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 
 import helpers.JSONReaderHelper;
+import resources.Ingredient;
+import resources.Vendor;
+import resources.VendorInventory;
 
 /**
  * Maps Item quantity and price to vendors
  */
 public class FoodVendorImpl implements FoodVendor
 {
-    public static final String PRICE = "price";
-    public static final String QUANTITY = "quantity";
+    private static final String PRICE = "price";
+    private static final String QUANTITY = "quantity";
+    private static final String CURRENCY = "currency";
+    private static final String VENDOR_FILE = "src/resources/vendors.json";
 
-    private static final String VENDOR_FILE = "src/foodvendors/vendors.json";
-
-    private JSONObject vendorToItemsJson = new JSONObject();
+    private JSONObject vendorsToItemsJson = new JSONObject();
 
     public FoodVendorImpl()
     {
-        vendorToItemsJson = JSONReaderHelper.getData(VENDOR_FILE);
+        vendorsToItemsJson = JSONReaderHelper.getData(VENDOR_FILE);
     }
-
-    public Map<String, Long> getIngredientFromVendor(String vendorName, String itemName)
+    
+    @Override
+    public List<VendorInventory> getIngredientFromVendors(List<String> vendorNames, String itemName)
     {
-        JSONObject vendorItemsJson = (JSONObject) vendorToItemsJson.get(vendorName);
-        JSONObject itemJson = (JSONObject) vendorItemsJson.get(itemName);
+    	List<VendorInventory> inventories = new ArrayList<VendorInventory>();
+    	
+    	for (String vendorName : vendorNames) {
+    		Vendor vendor = new Vendor(vendorName);
+    		Ingredient ingredient = getIngredient(itemName, vendorName);
+    		VendorInventory vendorInventory = new VendorInventory(vendor, ingredient);
+    		inventories.add(vendorInventory);
+    	}
         
-        Map<String, Long> itemMap = new HashMap<String, Long>();
-        Long quantity = (Long) itemJson.get(QUANTITY);
-        Long price = (Long) itemJson.get(PRICE);
-        itemMap.put(QUANTITY, quantity);
-        itemMap.put(PRICE, price);
-
-        return itemMap;
+        return inventories;
     }
+
+	private Ingredient getIngredient(String itemName, String vendorName) {
+		JSONObject vendorItemsJson = (JSONObject) vendorsToItemsJson.get(vendorName);
+		JSONObject itemJson = (JSONObject) vendorItemsJson.get(itemName);
+    
+		Long quantity = (Long) itemJson.get(QUANTITY);
+		Long price = (Long) itemJson.get(PRICE);
+		String currency = (String) itemJson.get(CURRENCY);
+		
+		Ingredient ingredient = new Ingredient(itemName, price, quantity, currency);
+		return ingredient;
+	}
 }

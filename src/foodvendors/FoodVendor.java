@@ -1,11 +1,12 @@
 package foodvendors;
 
-import java.util.Map;
+import java.util.List;
+import resources.VendorInventory;
 
 /**
- * Gets the price and quantity of an item from vendor
+ * Gets Ingredients from vendors
  */
 public interface FoodVendor {
 
-    public Map<String, Long> getIngredientFromVendor(String vendorName, String ingredientName);
+    public List<VendorInventory> getIngredientFromVendors(List<String> vendorNames, String itemName);
 }

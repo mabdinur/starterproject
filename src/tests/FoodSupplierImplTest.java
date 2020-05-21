@@ -21,5 +21,4 @@ public class FoodSupplierImplTest
         List<String> storesWithIngredient = foodFinderImpl.getVendorsByIngredient(INGREDIENT_NAME);
         assertTrue(storesWithIngredient.stream().anyMatch(shop -> VENDOR.equals(shop)));
     }
-
 }

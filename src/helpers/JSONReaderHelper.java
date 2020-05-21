@@ -8,13 +8,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ * 
+ * Read JSON file
+ *
+ */
 public class JSONReaderHelper
 {
     public static JSONObject getData(String fileName)
     {
         JSONObject dataJson = new JSONObject();
-        try (FileReader reader = new FileReader(fileName)) {
-            // Read JSON file
+        try 
+        {
+        	FileReader reader = new FileReader(fileName);
             JSONParser jsonParser = new JSONParser();
             dataJson = (JSONObject) jsonParser.parse(reader);
         } catch (FileNotFoundException e) {

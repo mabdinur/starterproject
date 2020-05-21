@@ -1,10 +1,13 @@
 package foodfinders;
 
-import java.util.Map;
+import java.util.List;
 
+import resources.VendorInventory;
+
+/**
+ * Gets ingredients from all available vendors 
+ */
 public interface FoodFinder {
-
-    // Gets ingredients from food vendors
-    // Returns ingredient price and quantity from vendor
-    public Map<String, Long> getIngredient(String ingredient);
+    
+    public List<VendorInventory> getIngredient(String ingredient);
 }

@@ -1,10 +1,10 @@
 package foodfinders;
 
 import java.util.List;
-import java.util.Map;
 
 import foodsuppliers.FoodSupplierImpl;
 import foodvendors.FoodVendorImpl;
+import resources.VendorInventory;
 
 /**
  * Finds the price and quantity of an ingredient from the first available vendor. Assumes at least one vendor has the
@@ -12,15 +12,19 @@ import foodvendors.FoodVendorImpl;
  */
 public class FoodFinderImpl implements FoodFinder
 {
-    public Map<String, Long> getIngredient(String ingredientName)
+	private FoodSupplierImpl foodSupplierImpl;
+	private FoodVendorImpl foodVendorImpl;
+	
+	public FoodFinderImpl(FoodSupplierImpl foodSupplierImpl, FoodVendorImpl foodVendorImpl ) {
+		this.foodSupplierImpl = foodSupplierImpl;
+		this.foodVendorImpl = foodVendorImpl;
+	}
+	
+	@Override
+    public List<VendorInventory> getIngredient(String ingredientName)
     {
-        FoodSupplierImpl foodSupplierImpl = new FoodSupplierImpl();
         List<String> vendorNames = foodSupplierImpl.getVendorsByIngredient(ingredientName);
-        String vendorName = vendorNames.get(0);
-
-        FoodVendorImpl foodVendorImpl = new FoodVendorImpl();
-        Map<String, Long> ingredientMap = foodVendorImpl.getIngredientFromVendor(vendorName, ingredientName);
-
+        List<VendorInventory> ingredientMap = foodVendorImpl.getIngredientFromVendors(vendorNames, ingredientName);
         return ingredientMap;
     } 
 }
